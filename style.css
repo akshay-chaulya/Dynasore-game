@@ -53,17 +53,24 @@ body {
 }
 
 #gamoverMessage {
-    height: 100px;
-    width: 150px;
-    display: none;
+    display: flex;
+    padding: 10px;
     align-items: center;
     justify-content: center;
-    background-color: #3a3838;
     color: white;
     font-size: 1.2rem;
     font-family: 'Times New Roman', Times, serif;
+    position: absolute;
+    top: 10vh;
+    font-size: 1.8rem;
+    transition: width 1s ease-in-out;
 }
 
+#gamoverMessage span {
+    color: rgb(0, 0, 124);
+    padding: 0 3px;
+    font-size: 2rem;
+}
 
 .animaRunner {
     animation: jump 1s linear;

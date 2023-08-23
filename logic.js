@@ -8,13 +8,16 @@ const runner = document.getElementById("runner");
 const villen = document.getElementById("villen");
 const gameOverMessage = document.getElementById("gamoverMessage")
 const showingSocore = document.querySelector(".showingSocore");
+const confarmToPlay = document.querySelector(".confarmToPlay");
 
 let score = 0;
 let cross = true;
 
-setTimeout(() => {
+confarmToPlay.addEventListener("click", () => {
+    startGame()
     music.play()
-},1000)
+    confarmToPlay.style.display = "none"
+})
 
 document.onkeydown = function (e) {
     // console.log("key code: ", e.keyCode)
@@ -37,13 +40,9 @@ document.onkeydown = function (e) {
 }
 
 function startGame() {
-    setTimeout(() => {
-        villen.classList.add("villenAni");
-        gameOverSetInterval();
-    }, 1000)
+    villen.classList.add("villenAni");
+    gameOverSetInterval();
 }
-
-startGame()
 
 const gameOverSetInterval = () => {
 
@@ -57,19 +56,25 @@ const gameOverSetInterval = () => {
 
         if (offsetX < 100 && offsetY < 52) {
             villen.classList.remove('villenAni')
+            gameOverMessage.style.display = 'flex'
+            gameOverMessage.innerHTML = "Gameover"
+            gameOverMessage.style.background = "black"
+            gameOverMessage.style.top = "20vh"
 
-            clearTimeout(gameOverPurpuse)
-            
-            window.addEventListener("click", () => {
-                location.reload()
-            })
+            setTimeout(() => {
+                gameOverMessage.style.display = "none"
+                confarmToPlay.style.display = 'block'
+                confarmToPlay.innerHTML = "Play Again"
+            },2000)
+
+            // clearTimeout(gameOverPurpuse)
 
             music.pause()
             gamOverMusic.play()
             setTimeout(() => {
                 gamOverMusic.pause()
-            },1000)
-            
+            }, 1000)
+
         }
         else if (offsetX < 50 && cross) {
             score++;
@@ -77,13 +82,13 @@ const gameOverSetInterval = () => {
             cross = false;
             setTimeout(() => {
                 cross = true;
-            },1000)
+            }, 1000)
 
             setTimeout(() => {
                 const villenAniDur = parseFloat(window.getComputedStyle(villen, null).getPropertyValue('animation-duration'))
                 let newDuration = villenAniDur + .1;
                 villen.style.animationDuration = newDuration + 's';
-            },1000)
+            }, 1000)
         }
     }, 10)
 }

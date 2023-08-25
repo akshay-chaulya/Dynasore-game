@@ -4,32 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Runing Game</title>
+    <title>Document</title>
     <link rel="stylesheet" href="style.css">
-    <script src="logic.js" defer></script>
 </head>
 
 <body>
-    <audio id="music"></audio>
-
-    <div class="mainContainer">
-        <div class="confarmToPlay">
-            Play
-        </div>
-
-        <div class="showingSocore">
-            Your Score is: 0
-        </div>
-        <div id="runner">
-
-        </div>
-        <div id="villen">
-
-        </div>
-        <div id="gamoverMessage">
-            Welcome To <span>iRobot Run</span> game
-        </div>
+    <div class="world" data-world>
+        <div class="score">0</div>
+        <div class="start-screen">Press Any Key Start</div>
+        <img src="/imgs/ground.png" alt="" class="ground">
+        <img src="/imgs/ground.png" alt="" class="ground">
+        <img src="/imgs/dino-lose.png" alt="" class="dino">
     </div>
+
+    <script src="logic.js"></script>
 </body>
 
 </html>

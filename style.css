@@ -1,129 +1,63 @@
-* {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
-    margin: 0;
+    user-select: none;
 }
 
 body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.world {
     overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 200px;
 }
 
-.mainContainer {
-    height: 100vh;
-    width: 100vw;
-    background-image: url(bg.avif);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.confarmToPlay{
-    background-color: navy;
-    padding: 10px 20px;
-    border-radius: 10px;
-    color: white;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 1.2rem;
-    cursor: pointer;
-}
-
-.confarmToPlay:hover {
-    color: navy;
-    background-color: white;
-    border: 1px solid navy;
-}
-
-.showingSocore {
-    padding: 10px;
+.score {
     position: absolute;
-    right: 20px;
-    top: 0;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 1.2rem;
+    font-size: 3vmin;
+    right: 1vmin;
+    top: 1vmin;
 }
 
-#runner {
-    background-image: url(runer-removebg-preview.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 175px;
-    width: 180px;
+.start-screen {
     position: absolute;
+    font-size: 5vmin;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.hide {
+    display: none;
+}
+
+.ground {
+    --left: 0;
+    position: absolute;
+    width: 300%;
     bottom: 0;
-    left: 50px;
+    left: calc(var(--left) * 1%);
 }
 
-#villen {
-    background-image: url(pngwing.com.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 250px;
-    width: 150px;
+.dino {
+    --bottom: 0;
     position: absolute;
+    left: 1%;
+    height: 30%;
+    bottom: calc(var(--bottom) * 1%);
+}
+
+.cactus {
+    position: absolute;
+    left: calc(var(--left) * 1%);
+    height: 30%;
     bottom: 0;
-    right: 50px;
 }
-
-#gamoverMessage {
-    display: flex;
-    padding: 15px 20px;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-family: 'Times New Roman', Times, serif;
-    position: absolute;
-    top: 10vh;
-    font-size: 1.8rem;
-    transition: width 1s ease-in-out;
-    translate: (25px);
-}
-
-#gamoverMessage span {
-    color: navy;
-    padding: 0 5px;
-    font-size: 2rem;
-}
-
-#gamoverMessage span::after {
-    content: "";
-    display: block;
-    width: 145px;
-    height: 3px;
-    border-radius: 2px;
-    background-color: navy;
-    margin: 0 0 0 2px;
-}
-
-.animaRunner {
-    animation: jump 1s linear;
-}
-
-.villenAni {
-    animation: run 5s linear infinite;
-}
-
-@keyframes jump{
-    0% {
-        bottom: 0;
-    }
-    50% {
-        bottom: 350px;
-    }
-    100% {
-        bottom: 0%;
-    }
-}
-
-@keyframes run{
-    0% {
-        left: 100vw;
-    }
-    100% {
-        left: -10vw;
-    }
-}
-
